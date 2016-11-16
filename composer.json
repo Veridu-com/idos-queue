@@ -1,0 +1,57 @@
+{
+    "name": "veridu/idos-scrape-handler",
+    "description": "Veridu idOS Scrape Handler.",
+    "license": "proprietary",
+    "type": "project",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Flavio Heleno",
+            "email": "flavio@veridu.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Cli\\": "cli",
+            "Test\\": "test"
+        }
+    },
+    "require": {
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.6",
+        "justinrainbow/json-schema": "^2.0",
+        "lcobucci/jwt": "^3.1",
+        "league/event": "^2.1",
+        "league/tactician": "^1.0",
+        "league/tactician-container": "^1.0",
+        "league/tactician-logger": "^0.9",
+        "lusitanian/oauth": "^0.8",
+        "monolog/monolog": "^1.13",
+        "respect/validation": "^1.0",
+        "roave/security-advisories": "dev-master",
+        "slim/http-cache": "^0.3",
+        "slim/slim": "^3.0",
+        "symfony/console": "^3.1",
+        "tuupola/slim-basic-auth": "^2.1",
+        "veridu/idos-sdk-php": "dev-php7",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "require-dev": {
+        "ext-xsl": "*",
+        "friendsofphp/php-cs-fixer": "@stable",
+        "pdepend/pdepend": "@stable",
+        "phploc/phploc": "@stable",
+        "phpmd/phpmd" : "@stable",
+        "phpunit/dbunit": "@stable",
+        "phpunit/phpunit": "@stable",
+        "psy/psysh": "@stable",
+        "sebastian/phpcpd": "@stable",
+        "sensiolabs/security-checker": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "theseer/phpdox": "@stable"
+    },
+    "config": {
+        "optimize-autoloader": false
+    }
+}
