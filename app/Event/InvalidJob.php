@@ -8,8 +8,6 @@ declare(strict_types = 1);
 
 namespace App\Event;
 
-use App\Command\Job;
-
 /**
  * Invalid Job event.
  */
@@ -17,7 +15,7 @@ class InvalidJob extends AbstractEvent {
     /**
      * Event related Job.
      *
-     * @var App\Command\Job
+     * @var mixed
      */
     public $job;
 
@@ -28,7 +26,7 @@ class InvalidJob extends AbstractEvent {
      *
      * @return void
      */
-    public function __construct(Job $job) {
+    public function __construct($job) {
         $this->job = $job;
     }
 }
