@@ -29,7 +29,7 @@ trait Token {
     }
 
     /**
-     * Asserts a valid or null token.
+     * Asserts a valid token (optional).
      *
      * @param mixed $token
      *
@@ -37,10 +37,9 @@ trait Token {
      *
      * @return void
      */
-    public function assertNullableToken($token) {
-        Validator::oneOf(
-            Validator::prnt(),
-            Validator::nullType()
+    public function assertOptionalToken($token) {
+        Validator::optional(
+            Validator::prnt()
         )->assert($token);
     }
 }
