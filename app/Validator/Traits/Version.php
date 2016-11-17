@@ -15,7 +15,7 @@ use Respect\Validation\Validator;
  */
 trait Version {
     /**
-     * Asserts a valid version number or null.
+     * Asserts a valid version number (optional).
      *
      * @param mixed $version
      *
@@ -23,10 +23,9 @@ trait Version {
      *
      * @return void
      */
-    public function assertNullableVersion($version) {
-        Validator::oneOf(
-            Validator::regex('/^((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)|)$/'),
-            Validator::nullType()
+    public function assertOptionalVersion($version) {
+        Validator::optional(
+            Validator::regex('/^((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)|)$/')
         )->assert($version);
     }
 }
