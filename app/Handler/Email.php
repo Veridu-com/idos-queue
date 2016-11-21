@@ -45,9 +45,7 @@ class Email implements HandlerInterface {
      *
      * @return void
      */
-    public function __construct(
-        \GearmanClient $gearmanClient
-    ) {
+    public function __construct(\GearmanClient $gearmanClient) {
         $this->gearman = $gearmanClient;
     }
 

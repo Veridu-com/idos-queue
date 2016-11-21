@@ -11,6 +11,7 @@ namespace App\Route;
 use App\Controller\ControllerInterface;
 use Interop\Container\ContainerInterface;
 use Slim\App;
+use Slim\Middleware\HttpBasicAuthentication;
 
 /**
  * Feature routing definitions.
@@ -48,8 +49,8 @@ class Feature implements RouteInterface {
             );
         };
 
-        self::listDaemons($app);
-        self::scheduleJob($app);
+        self::listDaemons($app, $settings['feature']);
+        self::scheduleJob($app, $settings['feature']);
     }
 
     /**
@@ -61,17 +62,28 @@ class Feature implements RouteInterface {
      * @apiGroup Feature
      *
      * @param \Slim\App $app
+     * @param array     $settings
      *
      * @return void
      *
      * @link docs/feature/listDaemons.md
      * @see App\Controller\Feature::listDaemons
      */
-    private static function listDaemons(App $app) {
+    private static function listDaemons(App $app, array $settings) {
         $app
             ->get(
                 '/feature',
                 'App\Controller\Feature:listDaemons'
+            )
+            ->add(
+                new HttpBasicAuthentication(
+                    [
+                        'users' => [
+                            $settings['user'] => $settings['pass']
+                        ],
+                        'secure' => false
+                    ]
+                )
             )
             ->setName('feature:listDaemons');
     }
@@ -85,17 +97,28 @@ class Feature implements RouteInterface {
      * @apiGroup Feature
      *
      * @param \Slim\App $app
+     * @param array     $settings
      *
      * @return void
      *
      * @link docs/feature/scheduleJob.md
      * @see App\Controller\Feature::scheduleJob
      */
-    private static function scheduleJob(App $app) {
+    private static function scheduleJob(App $app, array $settings) {
         $app
             ->post(
                 '/feature',
                 'App\Controller\Feature:scheduleJob'
+            )
+            ->add(
+                new HttpBasicAuthentication(
+                    [
+                        'users' => [
+                            $settings['user'] => $settings['pass']
+                        ],
+                        'secure' => false
+                    ]
+                )
             )
             ->setName('feature:scheduleJob');
     }

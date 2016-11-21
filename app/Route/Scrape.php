@@ -11,6 +11,7 @@ namespace App\Route;
 use App\Controller\ControllerInterface;
 use Interop\Container\ContainerInterface;
 use Slim\App;
+use Slim\Middleware\HttpBasicAuthentication;
 
 /**
  * Scrape routing definitions.
@@ -48,8 +49,8 @@ class Scrape implements RouteInterface {
             );
         };
 
-        self::listDaemons($app);
-        self::scheduleJob($app);
+        self::listDaemons($app, $settings['scrape']);
+        self::scheduleJob($app, $settings['scrape']);
     }
 
     /**
@@ -61,17 +62,28 @@ class Scrape implements RouteInterface {
      * @apiGroup Scrape
      *
      * @param \Slim\App $app
+     * @param array     $settings
      *
      * @return void
      *
      * @link docs/scrape/listDaemons.md
      * @see App\Controller\Scrape::listDaemons
      */
-    private static function listDaemons(App $app) {
+    private static function listDaemons(App $app, array $settings) {
         $app
             ->get(
                 '/scrape',
                 'App\Controller\Scrape:listDaemons'
+            )
+            ->add(
+                new HttpBasicAuthentication(
+                    [
+                        'users' => [
+                            $settings['user'] => $settings['pass']
+                        ],
+                        'secure' => false
+                    ]
+                )
             )
             ->setName('scrape:listDaemons');
     }
@@ -85,17 +97,28 @@ class Scrape implements RouteInterface {
      * @apiGroup Scrape
      *
      * @param \Slim\App $app
+     * @param array     $settings
      *
      * @return void
      *
      * @link docs/scrape/scheduleJob.md
      * @see App\Controller\Scrape::scheduleJob
      */
-    private static function scheduleJob(App $app) {
+    private static function scheduleJob(App $app, array $settings) {
         $app
             ->post(
                 '/scrape',
                 'App\Controller\Scrape:scheduleJob'
+            )
+            ->add(
+                new HttpBasicAuthentication(
+                    [
+                        'users' => [
+                            $settings['user'] => $settings['pass']
+                        ],
+                        'secure' => false
+                    ]
+                )
             )
             ->setName('scrape:scheduleJob');
     }

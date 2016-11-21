@@ -4,6 +4,7 @@
 *.phar
 *.sublime-project
 *.sublime-workspace
+.env
 .php_cs
 composer.lock
 environment.php

@@ -12,7 +12,6 @@ use App\Exception\AppException;
 use App\Factory;
 use App\Handler;
 use Interop\Container\ContainerInterface;
-use Lcobucci\JWT;
 use League\Event\Emitter;
 use League\Tactician\CommandBus;
 use League\Tactician\Container\ContainerLocator;
@@ -257,22 +256,6 @@ $container['commandFactory'] = function (ContainerInterface $container) : Factor
 // Validator Factory
 $container['validatorFactory'] = function (ContainerInterface $container) : Factory\Validator {
     return new Factory\Validator();
-};
-
-// JSON Web Token
-$container['jwt'] = function (ContainerInterface $container) : callable {
-    return function ($item) use ($container) {
-        switch ($item) {
-            case 'builder':
-                return new JWT\Builder();
-            case 'parser':
-                return new JWT\Parser();
-            case 'validation':
-                return new JWT\ValidationData();
-            case 'signer':
-                return new JWT\Signer\Hmac\Sha256();
-        }
-    };
 };
 
 // Respect Validator
