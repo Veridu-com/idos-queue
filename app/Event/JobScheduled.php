@@ -8,8 +8,6 @@ declare(strict_types = 1);
 
 namespace App\Event;
 
-use App\Command\Job;
-
 /**
  * Job Scheduled event.
  */
@@ -17,7 +15,7 @@ class JobScheduled extends AbstractEvent {
     /**
      * Event related Job.
      *
-     * @var App\Command\Job
+     * @var mixed
      */
     public $job;
     /**
@@ -30,12 +28,12 @@ class JobScheduled extends AbstractEvent {
     /**
      * Class constructor.
      *
-     * @param App\Command\Job $job
+     * @param mixed $job
      * @param \GearmanTask    $task
      *
      * @return void
      */
-    public function __construct(Job $job, string $task) {
+    public function __construct($job, string $task) {
         $this->job  = $job;
         $this->task = $task;
     }

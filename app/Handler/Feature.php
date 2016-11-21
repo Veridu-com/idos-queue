@@ -8,7 +8,7 @@ declare(strict_types = 1);
 
 namespace App\Handler;
 
-use App\Command\Job;
+use App\Command\Feature as FeatureCommand;
 use App\Event\InvalidJob;
 use App\Event\JobReceived;
 use App\Event\JobScheduled;
@@ -84,7 +84,7 @@ class Feature implements HandlerInterface {
      *
      * @return void
      */
-    public function handleFeature(Feature $command) {
+    public function handleFeature(FeatureCommand $command) {
         try {
             // Job validation
             $this->validator->assertUserName($command->userName);

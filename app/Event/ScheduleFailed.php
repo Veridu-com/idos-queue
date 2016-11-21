@@ -8,8 +8,6 @@ declare(strict_types = 1);
 
 namespace App\Event;
 
-use App\Command\Job;
-
 /**
  * Schedule Failed event.
  */
@@ -17,7 +15,7 @@ class ScheduleFailed extends AbstractEvent {
     /**
      * Event related Job.
      *
-     * @var App\Command\Job
+     * @var mixed
      */
     public $job;
     /**
@@ -30,11 +28,11 @@ class ScheduleFailed extends AbstractEvent {
     /**
      * Class constructor.
      *
-     * @param App\Command\Job $job
+     * @param mixed $job
      *
      * @return void
      */
-    public function __construct(Job $job, string $message) {
+    public function __construct($job, string $message) {
         $this->job     = $job;
         $this->message = $message;
     }

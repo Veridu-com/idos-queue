@@ -8,7 +8,7 @@ declare(strict_types = 1);
 
 namespace App\Handler;
 
-use App\Command\Job;
+use App\Command\Scrape as ScrapeCommand;
 use App\Event\InvalidJob;
 use App\Event\JobReceived;
 use App\Event\JobScheduled;
@@ -84,7 +84,7 @@ class Scrape implements HandlerInterface {
      *
      * @return void
      */
-    public function handleScrape(Scrape $command) {
+    public function handleScrape(ScrapeCommand $command) {
         try {
             // Job validation
             $this->validator->assertUserName($command->userName);
