@@ -28,8 +28,8 @@ class JobScheduled extends AbstractEvent {
     /**
      * Class constructor.
      *
-     * @param mixed $job
-     * @param \GearmanTask    $task
+     * @param mixed        $job
+     * @param \GearmanTask $task
      *
      * @return void
      */
