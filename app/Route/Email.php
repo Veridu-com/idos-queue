@@ -38,7 +38,7 @@ class Email implements RouteInterface {
         $container = $app->getContainer();
 
         $settings = $container->get('settings');
-        if (! empty($settings['daemons']['email'])) {
+        if (empty($settings['daemons']['email'])) {
             return;
         }
 
