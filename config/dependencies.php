@@ -221,8 +221,8 @@ $container['commandBus'] = function (ContainerInterface $container) : CommandBus
     $commands[Command\ResponseDispatch::class] = Handler\Response::class;
     $commands[Command\Scrape::class]           = Handler\Scrape::class;
     $commands[Command\Feature::class]          = Handler\Feature::class;
-    $commands[Command\Email\Invitation::class] = Handler\Email\Invitation::class;
-    $commands[Command\Email\OTP::class]        = Handler\Email\OTP::class;
+    $commands[Command\Email\Invitation::class] = Handler\Email::class;
+    $commands[Command\Email\OTP::class]        = Handler\Email::class;
     $handlerMiddleware                         = new CommandHandlerMiddleware(
         new ClassNameExtractor(),
         new ContainerLocator(
