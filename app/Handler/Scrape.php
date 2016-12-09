@@ -112,7 +112,8 @@ class Scrape implements HandlerInterface {
         // Job Scheduling
         $task = $this->gearman->doBackground(
             'scrape',
-            json_encode($command)
+            json_encode($command),
+            uniqid('scrape-')
         );
         if ($this->gearman->returnCode() === \GEARMAN_SUCCESS) {
             $this->emitter->emit(new JobScheduled($command, $task));
