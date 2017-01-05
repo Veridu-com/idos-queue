@@ -33,7 +33,8 @@ $appSettings = [
     'daemons' => [
         'scrape'  => true,
         'feature' => true,
-        'email'   => true
+        'email'   => true,
+        'sms'     => true
     ],
     'scrape' => [
         'user'      => Env::asString('IDOS_SCRAPE_USER', '***REMOVED***'),
@@ -46,5 +47,9 @@ $appSettings = [
     'email' => [
         'user'      => Env::asString('IDOS_EMAIL_USER', '***REMOVED***'),
         'pass'      => Env::asString('IDOS_EMAIL_PASS', '***REMOVED***')
+    ],
+    'sms' => [
+        'user'      => Env::asString('IDOS_SMS_USER', '***REMOVED***'),
+        'pass'      => Env::asString('IDOS_SMS_PASS', '***REMOVED***')
     ]
 ];
