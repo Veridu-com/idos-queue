@@ -37,8 +37,8 @@ class OTP extends AbstractCommand {
      * {@inheritdoc}
      */
     public function setParameters(array $parameters) : self {
-        if (isset($parameters['phone'])) {
-            $this->phone = $parameters['phone'];
+        if (isset($parameters['target'])) {
+            $this->phone = $parameters['target'];
         }
         
         if (isset($parameters['password'])) {
