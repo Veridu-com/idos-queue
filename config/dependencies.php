@@ -223,6 +223,7 @@ $container['commandBus'] = function (ContainerInterface $container) : CommandBus
     $commands[Command\Feature::class]          = Handler\Feature::class;
     $commands[Command\Email\Invitation::class] = Handler\Email::class;
     $commands[Command\Email\OTP::class]        = Handler\Email::class;
+    $commands[Command\Sms\OTP::class]          = Handler\Sms::class;
     $handlerMiddleware                         = new CommandHandlerMiddleware(
         new ClassNameExtractor(),
         new ContainerLocator(
