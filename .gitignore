@@ -5,6 +5,7 @@
 *.sublime-project
 *.sublime-workspace
 .env
+.vscode
 .php_cs
 composer.lock
 environment.php
