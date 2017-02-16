@@ -43,7 +43,7 @@
         "sebastian/phpcpd": "@stable",
         "sensiolabs/security-checker": "@stable",
         "squizlabs/php_codesniffer": "@stable",
-        "theseer/phpdox": "@stable"
+        "theseer/phpdox": "dev-master"
     },
     "config": {
         "optimize-autoloader": false

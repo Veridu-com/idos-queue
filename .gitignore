@@ -5,9 +5,11 @@
 *.sublime-project
 *.sublime-workspace
 .env
-.vscode
 .php_cs
+.vscode
+build/
 composer.lock
+docs/
 environment.php
 humbug.json
 humbuglog.*
