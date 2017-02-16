@@ -18,6 +18,13 @@ class LogFiredEventListener extends AbstractListener {
         $this->logger = $logger;
     }
 
+    /**
+     * Handles event.
+     *
+     * @param \League\Event\EventInterface $event
+     *
+     * @return void
+     */
     public function handle(EventInterface $event) {
         $this->logger->debug(sprintf('%s was fired', $event->getName()));
     }
