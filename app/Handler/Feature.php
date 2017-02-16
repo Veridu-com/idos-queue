@@ -108,7 +108,8 @@ class Feature implements HandlerInterface {
         // Job Scheduling
         $task = $this->gearman->doBackground(
             'feature',
-            json_encode($command)
+            json_encode($command),
+            uniqid('feature-')
         );
         if ($this->gearman->returnCode() === \GEARMAN_SUCCESS) {
             $this->emitter->emit(new JobScheduled($command, $task));

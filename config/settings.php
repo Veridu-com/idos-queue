@@ -28,12 +28,14 @@ $appSettings = [
     ],
     'gearman' => [
         'timeout' => 1000,
-        'servers' => Env::fromJson('IDOS_GEARMAN_SERVERS', [['localhost', 4730]])
+        'servers' => Env::asString('IDOS_GEARMAN_SERVERS', 'localhost:4730')
     ],
     'daemons' => [
         'scrape'  => true,
         'feature' => true,
-        'email'   => true
+        'email'   => true,
+        'sms'     => true,
+        'cra'     => true
     ],
     'scrape' => [
         'user'      => Env::asString('IDOS_SCRAPE_USER', '***REMOVED***'),
@@ -46,5 +48,13 @@ $appSettings = [
     'email' => [
         'user'      => Env::asString('IDOS_EMAIL_USER', '***REMOVED***'),
         'pass'      => Env::asString('IDOS_EMAIL_PASS', '***REMOVED***')
+    ],
+    'sms' => [
+        'user'      => Env::asString('IDOS_SMS_USER', '***REMOVED***'),
+        'pass'      => Env::asString('IDOS_SMS_PASS', '***REMOVED***')
+    ],
+    'cra' => [
+        'user'      => Env::asString('IDOS_CRA_USER', '***REMOVED***'),
+        'pass'      => Env::asString('IDOS_CRA_PASS', '***REMOVED***')
     ]
 ];

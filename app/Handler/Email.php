@@ -77,8 +77,9 @@ class Email implements HandlerInterface {
 
         // Job Scheduling
         $task = $this->gearman->doBackground(
-            'send_email',
-            json_encode($emailData)
+            'email',
+            json_encode($emailData),
+            uniqid('email-')
         );
         if ($this->gearman->returnCode() === \GEARMAN_SUCCESS) {
             // $this->emitter->emit(new JobScheduled($command, $task));
@@ -113,8 +114,9 @@ class Email implements HandlerInterface {
 
         // Job Scheduling
         $task = $this->gearman->doBackground(
-            'send_email',
-            json_encode($emailData)
+            'email',
+            json_encode($emailData),
+            uniqid('email-')
         );
         if ($this->gearman->returnCode() === \GEARMAN_SUCCESS) {
             // $this->emitter->emit(new JobScheduled($command, $task));

@@ -221,8 +221,10 @@ $container['commandBus'] = function (ContainerInterface $container) : CommandBus
     $commands[Command\ResponseDispatch::class] = Handler\Response::class;
     $commands[Command\Scrape::class]           = Handler\Scrape::class;
     $commands[Command\Feature::class]          = Handler\Feature::class;
-    $commands[Command\Email\Invitation::class] = Handler\Email\Invitation::class;
-    $commands[Command\Email\OTP::class]        = Handler\Email\OTP::class;
+    $commands[Command\Email\Invitation::class] = Handler\Email::class;
+    $commands[Command\Email\OTP::class]        = Handler\Email::class;
+    $commands[Command\Sms\OTP::class]          = Handler\Sms::class;
+    $commands[Command\Cra\TraceSmart::class]   = Handler\Cra::class;
     $handlerMiddleware                         = new CommandHandlerMiddleware(
         new ClassNameExtractor(),
         new ContainerLocator(
@@ -302,13 +304,7 @@ $container['gearmanClient'] = function (ContainerInterface $container) : Gearman
         $gearman->setTimeout($settings['gearman']['timeout']);
     }
 
-    foreach ($settings['gearman']['servers'] as $server) {
-        if (is_array($server)) {
-            $gearman->addServer($server[0], $server[1]);
-        } else {
-            $gearman->addServer($server);
-        }
-    }
+    $gearman->addServers($settings['gearman']['servers']);
 
     return $gearman;
 };
