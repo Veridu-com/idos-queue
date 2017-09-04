@@ -16,8 +16,8 @@ This application relies on [Gearman](http://gearman.org/) for queueing tasks and
 
 ## Handler Projects
 
-- [Scrape Handler](https://bitbucket.org/veridu/idos-scrape-handler)
-- [Feature Handler](https://bitbucket.org/veridu/idos-feature-handler)
-- [E-mail Handler](https://bitbucket.org/veridu/idos-email-handler)
-- [SMS Handler](https://bitbucket.org/veridu/idos-sms-handler)
-- [CRA Handler](https://bitbucket.org/veridu/idos-cra-handler)
+- [Scrape Handler](https://github.com/veridu/idos-scrape-handler)
+- [Feature Handler](https://github.com/veridu/idos-feature-handler)
+- [E-mail Handler](https://github.com/veridu/idos-email-handler)
+- [SMS Handler](https://github.com/veridu/idos-sms-handler)
+- [CRA Handler](https://github.com/veridu/idos-cra-handler)
